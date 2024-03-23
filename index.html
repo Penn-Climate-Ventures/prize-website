@@ -11267,6 +11267,133 @@
       data-styled.g105[id="Prizes-d3w5rm-4"] {
         content: "JiZCQ,";
       } /*!sc*/
+      .custom-select {
+  position: relative;
+  width: 200px;
+  max-width: 100%;
+  font-size: 1.15rem;
+  color: #000;
+  margin-top: 3rem;
+}
+
+.select-button {
+  width: 100%;
+  font-size: 1.15rem;
+  background-color: #fff;
+  padding: 0.675em 1em;
+  border: 1px solid #caced1;
+  border-radius: 0.25rem;
+  cursor: pointer;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.selected-value {
+  text-align: left;
+}
+
+.arrow {
+  border-left: 5px solid transparent;
+  border-right: 5px solid transparent;
+  border-top: 6px solid #000;
+  transition: transform ease-in-out 0.3s;
+}
+
+.select-dropdown {
+  position: absolute;
+  list-style: none;
+  width: 100%;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+  background-color: #fff;
+  border: 1px solid #caced1;
+  border-radius: 4px;
+  padding: 10px;
+  margin-top: 10px;
+  max-height: 200px;
+  overflow-y: auto;
+  transition: 0.5s ease;
+
+  transform: scaleY(0);
+  opacity: 0;
+  visibility: hidden;
+}
+
+.select-dropdown:focus-within {
+  box-shadow: 0 10px 25px rgba(94, 108, 233, 0.6);
+}
+
+.select-dropdown li {
+  position: relative;
+  cursor: pointer;
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+}
+
+.select-dropdown li label {
+  width: 100%;
+  padding: 8px 10px;
+  cursor: pointer;
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+}
+
+.select-dropdown::-webkit-scrollbar {
+  width: 7px;
+}
+.select-dropdown::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 25px;
+}
+
+.select-dropdown::-webkit-scrollbar-thumb {
+  background: #ccc;
+  border-radius: 25px;
+}
+
+.select-dropdown li:hover,
+.select-dropdown input:checked ~ label {
+  background-color: #f2f2f2;
+}
+
+.select-dropdown input:focus ~ label {
+  background-color: #dfdfdf;
+}
+
+.select-dropdown input[type="radio"] {
+  position: absolute;
+  left: 0;
+  opacity: 0;
+}
+
+/* interactivity */
+
+.custom-select.active .arrow {
+  transform: rotate(180deg);
+}
+
+.custom-select.active .select-dropdown {
+  opacity: 1;
+  visibility: visible;
+  transform: scaleY(1);
+}
+
+/*=============
+Aesthetics 
+=========================*/
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+}
     </style>
     <title data-react-helmet="true">Home | PCV Prize Competition</title>
     <meta
@@ -11410,38 +11537,65 @@
               <div class="Navbar__NavLinks-sc-1qxh3vi-7 hjNuAF">
                 <a
                   rel="noreferrer noopener"
-                  href="/"
+                  href="index.html"
                   class="Navbar__NavButton-sc-1qxh3vi-8 dVvwf"
-                  >Home</a
-                >
-                <a
+                  >Home</a>
+                  <div class="custom-select" style = "z-index: 10000;">
+                    <button
+                      class="select-button"
+                      role="combobox"
+                      aria-labelledby="select button"
+                      aria-haspopup="listbox"
+                      aria-expanded="false"
+                      aria-controls="select-dropdown"
+                    >
+                      <span class="selected-value">2024 Competition</span>
+                      <span class="arrow"></span>
+                    </button>
+                    <ul class="select-dropdown" role="listbox" id="select-dropdown">
+                      <li role="option" onclick="location.href='eligibility/index.html';">
+                        <input type="radio" id="github" name="social-account"  />
+                        <label for="github">Eligibility</label>
+                      </li>
+                      <li role="option" onclick="location.href='judgingtracks/index.html';">
+                        <input type="radio" id="instagram" name="social-account" />
+                        <label for="instagram"
+                          >Judging</label
+                        >
+                      </li>
+                      <li role="option" onclick="location.href='competitiontracks/index.html';">
+                        <input type="radio" id="facebook" name="social-account" />
+                        <label for="facebook"
+                          >Competition Tracks</label
+                        >
+                      </li>
+                     
+                    </ul>
+                  </div>
+                <link  href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet"
+                /><a
                   rel="noreferrer noopener"
-                  href="/rules"
-                  class="Navbar__NavButton-sc-1qxh3vi-8 dVvwf"
-                  >2024 Competition</a
-                ><a
-                  rel="noreferrer noopener"
-                  href="/people"
+                  href="people/index.html"
                   class="Navbar__NavButton-sc-1qxh3vi-8 dVvwf"
                   >People</a
                 ><a
                   rel="noreferrer noopener"
-                  href="/sponsors"
+                  href="sponsors/index.html"
                   class="Navbar__NavButton-sc-1qxh3vi-8 dVvwf"
                   >Sponsors</a
                 ><a
                   rel="noreferrer noopener"
-                  href="/faq"
+                  href="faq/index.html"
                   class="Navbar__NavButton-sc-1qxh3vi-8 dVvwf"
                   >FAQ</a
                 ><a
                   rel="noreferrer noopener"
-                  href="/winners"
+                  href="winners/index.html"
                   class="Navbar__NavButton-sc-1qxh3vi-8 dVvwf"
                   >Past Competitions</a
                 ><a
                   rel="noreferrer noopener"
-                  href="/about"
+                  href="about/index.html"
                   class="Navbar__NavButton-sc-1qxh3vi-8 dVvwf"
                   >About PCV</a
                 >
@@ -11737,5 +11891,40 @@
     <script src="/app-b40bd9569d8d54b9e8a3.js" async=""></script>
     <script src="/framework-31413af41550353e296a.js" async=""></script>
     <script src="/webpack-runtime-112e99e25373045070fd.js" async=""></script>
+    <script>
+      const customSelect = document.querySelector(".custom-select");
+      const selectBtn = document.querySelector(".select-button");
+      
+      const selectedValue = document.querySelector(".selected-value");
+      const optionsList = document.querySelectorAll(".select-dropdown li");
+      
+      // add click event to select button
+      selectBtn.addEventListener("click", () => {
+        // add/remove active class on the container element
+        customSelect.classList.toggle("active");
+        // update the aria-expanded attribute based on the current state
+        selectBtn.setAttribute(
+          "aria-expanded",
+          selectBtn.getAttribute("aria-expanded") === "true" ? "false" : "true"
+        );
+      });
+      
+      optionsList.forEach((option) => {
+        function handler(e) {
+          // Click Events
+          if (e.type === "click" && e.clientX !== 0 && e.clientY !== 0) {
+            selectedValue.textContent = this.children[1].textContent;
+            customSelect.classList.remove("active");
+          }
+          // Key Events
+          if (e.key === "Enter") {
+            selectedValue.textContent = this.textContent;
+            customSelect.classList.remove("active");
+          }
+        }
+      
+        option.addEventListener("keyup", handler);
+        option.addEventListener("click", handler);
+      });</script>
   </body>
 </html>
